@@ -1,0 +1,24 @@
+1.
+Download source from
+http://llvm.org/releases/download.html#3.7.1
+
+####################### has problem, change to 3.6.2 ##################################
+2.
+build
+https://www.vultr.com/docs/how-to-install-llvm-and-clang-on-centos-6
+
+sudo apt-get install cmake
+
+cd /home/ethan/Downloads/llvm-3.6.2.src
+
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/g++ ./llvm-3.6.2.src && make -j 4&& sudo make install && echo success
+
+3.
+apt-get install numba
+(still can't install llvmlite, but this works !)
+
+
+###################### numbapro is NOT free (it can use target='gpu') ##################################
+
+use pyCUDA instead ( not installed yet )
+
