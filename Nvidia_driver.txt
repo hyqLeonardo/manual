@@ -1,0 +1,101 @@
+****** all based on this one website ******
+
+http://askubuntu.com/questions/451672/installing-and-testing-cuda-in-ubuntu-14-04
+
+problem with CUDA samples using third-party packages
+
+1.
+http://stackoverflow.com/questions/22360771/missing-recommended-library-libglu-so
+
+After you do the installation of the above 3rd party libraries, no harm running the NVIDIA driver installation again if you encounter something like this:
+
+/usr/bin/ld: skipping incompatible /usr/lib/gcc/x86_64-redhat-linux/4.8.2/../../../libGL.so when searching for -lGL/usr/bin/ld: skipping incompatible /lib/libGL.so when searching for -lGL
+/usr/bin/ld: skipping incompatible /usr/lib/libGL.so when searching for -lGL
+/usr/bin/ld: cannot find -lGL
+collect2: error: ld returned 1 exit status
+make: *** [simpleGL] Error 1
+
+This is because some of the symbolic links were broken by the installation. 
+
+2.
+https://forum.qt.io/topic/54284/solved-error-on-linux-cannot-find-lgl/3
+
+3.
+resolve LD_LIBRARY_PATH
+https://devtalk.nvidia.com/default/topic/845363/libcublas-so-7-0-cannot-open-shared-object-file/
+
+Solved. Finally I did:
+
+sudo echo "/usr/local/cuda-7.0/lib64" > /etc/ld.so.conf.d/cuda.conf
+sudo ldconfig
+
+4.
+after update which installed a new kernel, can't boot, freeze on "loading initramfs ..."
+
+[Doesn't work] http://www.randomlinuxstuff.tk/2013/06/fix-ubuntu-1304-boot-screen-plymouth.html
+
+[SOLVED] Just reinstall NVIDIA driver, the version I used is 352.39 (based on the first link while installing cuda)
+         remember to enable DKMS during the install
+
+###### old method #######
+
+http://ubuntuforums.org/showthread.php?t=2307693
+
+Step1:
+
+I think the first thing you need to do is remove all installs of nvidia-drivers and related packages
+Code:
+sudo apt-get purge nvidia*
+remove all the ppa's you added to try to resolve this issue eg
+Code:
+sudo ppa-purge xorg-edgers
+remove the current xorg.conf (if you have one)
+Code:
+sudo mv /etc/X11/xorg.conf /etc/X11/xorg.conf.2015-12-28
+You should now have a clean slate, so add the Graphics Drivers Team ppa
+Code:
+sudo add-apt-repository ppa:graphics-drivers/ppa
+Update the system
+Code:
+sudo apt-get update
+Make sure you have the latest source and headers
+Code:
+sudo apt-get install linux-source linux-headers-generic
+Install either nvidia-355 or nvidia-358 - I'm using 358, but there is a warning on the PPA page that 358 reportedly crashes Steam and they advise 355 - decide for yourself
+Code:
+sudo apt-get install nvidia-35x nvidia-settings
+DO NOT RESTART
+
+Step2:
+
+You'll need to edit /etc/default/grub at Lines 11 and 25 (use sudo nano)
+Code:
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash nomodeset"
+Code:
+GRUB_GFXMODE=1920x1080
+After editing you'll need to
+Code:
+sudo update-grub2
+
+Step3:
+
+Resolution
+
+find the right resolution
+http://askubuntu.com/questions/54067/how-do-i-safely-change-grub2-screen-resolution
+
+failed
+http://www.drugdesign.gr/blog/problems-with-screen-resolution-after-installing-nvidia-drivers-in-ubuntu-1204-lts
+
+promising
+http://askubuntu.com/questions/493165/ubuntu-14-04-unknown-display-nvidia-graphics
+
+cvt 1920 1080
+xrandr --newmode "Copied Line from above"
+xrandr --newmode "1920x1080_60.00" 173.00 1920 2048 2248 2576 1080 1083 1088 1120 -hsync +vsync
+Type xrandr -q to list your screen outputs and look for your connected screen eg. VGA1, HDMI1 or DP1
+xrandr --addmode VGA1 1920x1080_60.00
+
+http://www.randomlinuxstuff.tk/2013/06/fix-ubuntu-1304-boot-screen-plymouth.html
+
+
