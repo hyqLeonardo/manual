@@ -1,0 +1,10 @@
+git config --global user.email hyq335335@163.com
+git config --global user.name hyqLeonardo
+
+git clone username@hostname:/path/to/repository
+
+cd /path/to/repository
+# edit some files
+git add .			# stage new added files (untracked) https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
+git commit -a 			# Commit all changes to the local version of the repository
+git push origin master 		# Push changes to the server's version of the repository
