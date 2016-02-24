@@ -1,0 +1,5 @@
+https://wiki.tiker.net/PyCuda/Installation/Linux
+
+without optinall Boost C++ Libraries, instead, Boost is installed using guide below:
+
+http://www.boost.org/doc/libs/1_60_0/more/getting_started/unix-variants.html
