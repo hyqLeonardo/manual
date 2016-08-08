@@ -2,6 +2,7 @@ git config --global user.email hyq335335@163.com
 git config --global user.name hyqLeonardo
 
 git clone username@hostname:/path/to/repository
+git remote add origin http://github.com/hyqLeonardo/repository
 
 cd /path/to/repository
 # edit some files
