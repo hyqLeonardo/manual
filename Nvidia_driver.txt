@@ -1,3 +1,21 @@
+###################################################
+Ubuntu 16.04 - succeed in Lenovo-Y700
+1. install
+https://yangcha.github.io/GTX-1080/ 
+2. login loop trouble shooting
+http://askubuntu.com/questions/762254/why-do-i-get-required-key-not-available-when-install-3rd-party-kernel-modules
+3. useful trick
+http://askubuntu.com/questions/289459/nvidia-drivers-installed-but-not-used
+
+***************************************************
+Caffe
+The PYTHON_PATH to include in Makefile.config in my computer is : 
+PYTHON_INCLUDE := /usr/local/include/python2.7 /usr/lib/python2.7/dist-packages/numpy/core/include
+NOT
+PYTHON_INCLUDE := /usr/include/python2.7 /usr/lib/python2.7/dist-packages/numpy/core/include
+###################################################
+
+
 ****** all based on this one website ******
 
 http://askubuntu.com/questions/451672/installing-and-testing-cuda-in-ubuntu-14-04
