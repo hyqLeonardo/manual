@@ -18,6 +18,7 @@ PYTHON_INCLUDE := /usr/include/python2.7 /usr/lib/python2.7/dist-packages/numpy/
 ***************************************************
 CUDNN
 http://stackoverflow.com/questions/31326015/how-to-verify-cudnn-installation
+https://github.com/pfnet/chainer
 
 ###################################################
 # Ubuntu 14.04
