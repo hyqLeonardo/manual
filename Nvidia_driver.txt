@@ -1,5 +1,6 @@
 ###################################################
-Ubuntu 16.04 - succeed in Lenovo-Y700
+# Ubuntu 16.04 - succeed in Lenovo-Y700
+###################################################
 1. install
 https://yangcha.github.io/GTX-1080/ 
 2. login loop trouble shooting
@@ -13,8 +14,14 @@ The PYTHON_PATH to include in Makefile.config in my computer is :
 PYTHON_INCLUDE := /usr/local/include/python2.7 /usr/lib/python2.7/dist-packages/numpy/core/include
 NOT
 PYTHON_INCLUDE := /usr/include/python2.7 /usr/lib/python2.7/dist-packages/numpy/core/include
-###################################################
 
+***************************************************
+CUDNN
+http://stackoverflow.com/questions/31326015/how-to-verify-cudnn-installation
+
+###################################################
+# Ubuntu 14.04
+###################################################
 
 ****** all based on this one website ******
 
